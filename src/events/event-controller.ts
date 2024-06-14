@@ -53,6 +53,7 @@ class EventController {
             if(sortDirection != null && (sortDirection !== 'desc' && sortDirection !== 'asc')) {
                 res.status(401).json({error: "Wrong sort direction"});
             }
+            // console.log(req.user);
             if(req.user === null) {
                 const events: Event[] = this.eventService.getEvents();
                 res.status(200).json(this.Sort(this.PaginateEvents(events, (page as any), (limit as any)), (sortBy as any), (sortDirection as any)));   
